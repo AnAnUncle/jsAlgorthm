@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+        $("button").click(function() {
+            $.ajax({
+                url: "https://pic4.zhimg.com/80/v2-9459d37983e1401e657ef320e3188012_720w.jpg?source=1940ef5c",
+                success: function(result) {
+                    console.log(this.url)
+                }
+            });
+        });
+    });
+    </script>
+    <style type="text/css">
+    .triangle {
+        width: 0px;
+        height: 0px;
+        border-width: 20px;
+        border-style: solid;
+        border-color: #e66161 transparent transparent #e66161;
+    }
+    </style>
+</head>
+
+<body>
+    <button>向页面发送 HTTP GET 请求，然后获得返回的结果</button>
+    <div class="triangle"></div>
+    <div class="wrap" style="width: 200px;height: 200px;background-color: red;display: flex;justify-content: center;align-items: center;">
+    	<div class="inner" style="width: 100px;height: 100px;background-color: green"></div>
+    </div>
+    <input id="debounce">
+    <script type="text/javascript" src="js/string.js"></script>
+    <script type="text/javascript" src="js/array.js"></script>
+    <script type="text/javascript" src="js/dynamic.js"></script>
+    <script type="text/javascript" src="js/arrayProto.js"></script>
+    <script type="text/javascript" src="js/algorithm.js"></script>
+</body>
+
+</html>
