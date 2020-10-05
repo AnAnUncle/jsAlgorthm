@@ -247,3 +247,19 @@ function findLongest( str ) {
 module.exports = {
     findLongest : findLongest
 };
+
+// 数组旋转90度
+var rotate = function(matrix) {
+    let temp=0
+    for(let i=0;i<matrix.length;++i){
+        for(let j=0;j<i;++j){
+            temp = matrix[i][j]
+            matrix[i][j]=matrix[j][i]
+            matrix[j][i]=temp
+            // console.log(obj)
+        }
+    }
+    matrix.forEach(item=>item.reverse())
+    return matrix
+};
+console.log(rotate([[1,2,3],[4,5,6],[7,8,9]]))
