@@ -146,3 +146,7 @@ function main(array){
     return result
  }
  // console.log(main([0,0,1,1]))
+
+
+
+ 

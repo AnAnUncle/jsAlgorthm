@@ -173,7 +173,7 @@ function sleep(delay){
     setTimeout(resolve,delay)
   })
 }
-sleep(5000).then(()=>{console.log(1)})
+// sleep(5000).then(()=>{console.log(1)})
 
 /**
  * 
@@ -244,9 +244,6 @@ function findLongest( str ) {
     }
     return w
 }
-module.exports = {
-    findLongest : findLongest
-};
 
 // 数组旋转90度
 var rotate = function(matrix) {
@@ -262,4 +259,4 @@ var rotate = function(matrix) {
     matrix.forEach(item=>item.reverse())
     return matrix
 };
-console.log(rotate([[1,2,3],[4,5,6],[7,8,9]]))
+// console.log(rotate([[1,2,3],[4,5,6],[7,8,9]]))

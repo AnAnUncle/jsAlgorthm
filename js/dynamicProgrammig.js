@@ -408,13 +408,13 @@ function validBraces(str) {
 	else
 		return -1
 }
-console.log(validBraces(")(}"))
+// console.log(validBraces(")(}"))
 //  
 function reverse(str) {
 	return str.match(/([a-zA-Z0-9]+)|([\W]+)/g).reverse().join("")
 
 }
-console.log(reverse("what is this?"))
+// console.log(reverse("what is this?"))
 
 //最长不重复子字符串
 function lengthOfLongestSubstring(str){
