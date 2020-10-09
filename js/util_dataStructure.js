@@ -145,37 +145,41 @@ function selectSort(array) {
 
 //堆排序(大顶堆）
 //堆调整,数组从零开始，它的左海子为2i+1,右孩子为2i+2
-function adjustHeap(array,k,len) {
-  console.log(array[k])
-  let temp =array[k]
-  for(let i=2*k+1;i<=len-1;i=2*i+1){
-    if(i<len-1&&array[i]<array[i+1]){
+function adjustHeap(array,k,last) {
+  let temp = array[k]
+  for(let i = k * 2 + 1; i <= last; i = i * 2 + 1){
+    if(i < last && array[i] < array[i+1]){
       ++i
     }
-    if(temp>=array[i])
+    if(temp >= array[i]){
       break
+    }
     else{
-      array[k]=array[i]
-      k=i
+      array[k] = array[i]
+      k = i
     }
   }
-  array[k]=temp
+  array[k] = temp
 }
 //建堆
-function buildHeap(array,len) {
-  for (let i=Math.floor((len-1)/2);i>=0;--i){
-    adjustHeap(array,i,len)
+function buildHeap(array,last) {
+  for (let i=Math.floor((last-1)/2);i>=0;--i){
+    adjustHeap(array,i,last)
   }
 }
 //排序
 function heapSort(array) {
   let len = array.length
-  buildHeap(array,array.length)
+  buildHeap(array,array.length-1)
   for(let i = len-1;i>0;--i){
     swap(array,i,0)
-    adjustHeap(array,0,i)
-    console.log(i)
+    adjustHeap(array,0,i-1)
   }
+}
+function swap(array,a,b) {
+  let temp = array[a]
+  array[a]=array[b]
+  array[b]=temp
 }
 
 //归并排序

@@ -1,5 +1,4 @@
 //根据对象属性对对象排序
-
 function order(a,b){
 	if(a.name<b.name){
 		return -1
@@ -20,7 +19,7 @@ function tree(obj){
 	}
 }
 
-var obj={
+var obj1={
 	name:"guang",
 	children:[
 	 {
@@ -41,5 +40,34 @@ var obj={
 	 	}
 	 ]
 }
-tree(obj)
+tree(obj1)
 // console.log(obj)
+//层级获取对象属性
+function get(obj,str){
+	if(obj==null||typeof obj!="object")
+		return undefined
+	if(typeof str=="string"){
+		str=str.split(".")
+	}
+	key=str[0]
+	if(obj.hasOwnProperty(key)){
+		if(str.length==1){
+			return obj[key]
+		}
+		else{
+			return get(obj[key],str.slice(1))
+		}
+
+	}
+	else
+		return undefined
+}
+const ob = {
+  a:{
+    b:{
+      c:1
+    }
+  }
+}
+// console.log(get(ob,'a.b.c'))
+console.log(4>>1)

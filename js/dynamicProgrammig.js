@@ -424,9 +424,8 @@ function lengthOfLongestSubstring(str){
 		j = disc.get(str[i])===undefined?-1:disc.get(str[i])
 		disc.set(str[i],i)
 		// console.log(disc)
-		temp = i - j > temp ? temp+1 : i - j
-		res = Math.max(res , temp)
-		console.log(temp,res)
+		temp = i - j > temp ? temp + 1 : i - j
+		res = Math.max(res, temp)
 	}
 	return res
 }
@@ -453,3 +452,20 @@ function mins(a,b,k,v){
 
 }
 // console.log(mins(10,3,2,1))
+var longestPalindrome = function(s) {
+  let len = s.length
+  let dp = Array(len).fill(1)
+  let disc = []
+  for(let i = 1; i < len - 1; ++i){
+      for(let j = i - 1, k = i + 1; i >= 0 && j < len; --i, ++j){
+          if(s[i] == s[j]){
+            dp[i] += 2
+          }
+          else{
+              break
+          }
+      }
+  }
+  let max = dp.reduce((pre, now)=>pre > now ? pre: now)
+};
+longestPalindrome("abc")
