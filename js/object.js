@@ -70,4 +70,4 @@ const ob = {
   }
 }
 // console.log(get(ob,'a.b.c'))
-console.log(4>>1)
+// console.log(4>>1)

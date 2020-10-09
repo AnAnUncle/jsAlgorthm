@@ -104,15 +104,10 @@ var minSubArrayLen = function(s, nums) {
   let sum=0,res=Infinity,j=0
   for(let i=0;i<nums.length;++i){
     sum+=nums[i]
-    if(sum>=s){
-      res=Math.min(res,i-j+1)
-      sum-=nums[j]
-      ++j
-      while(sum>=s){
+    while(sum>=s){
         res=Math.min(res,i-j+1)
         sum-=nums[j]
         ++j
-      }
     }
   }
   return res==Infinity?0:res
@@ -168,47 +163,35 @@ function deDup(array){
 let myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd']
 // console.log(deDup(myArray))
 
+// unnique函数
+Array.prototype.unique = function(){
+  return deDup(JSON.stringify(this).match(/[0-9]+/g).map(Number))
+}
+
+Array.prototype.unique = function(){
+  let res = []
+  for(let i = 0; i < this.length; ++i){
+
+  }
+  function deStructure(array,res){
+    array.forEach((item)=>{
+      if(Array.isArray(item)){
+        res.concat(...)
+      }
+    })
+  }
+}
+
+
+
+console.log([1,[2,3],[[4],[4,[4,5]]]].unique())
+
 function sleep(delay){
   return new Promise((resolve,reject)=>{
     setTimeout(resolve,delay)
   })
 }
-// sleep(5000).then(()=>{console.log(1)})
 
-/**
- * 
- * @param str string字符串 
- * @return string字符串一维数组
- */
-/*
-1.flex布局(父元素）
-.father{
-display:flex;
-justify-content:center;
-align-items:center;
-}
-2.子元素高度已知,高度为h,宽度为w
-.father{
- position:relative
-}
-.child{
-positon:absolute;
-left:50%;
-top:50%;
-margin-left:-w/2px;
-margin-top:-h/2px;
-}
-3.子元素高度未知
-.father{
- position:relative
-}
-.child{
-positon:absolute;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%)
-}
-*/
 function findLongest( str ) {
     // write code here
     let num
