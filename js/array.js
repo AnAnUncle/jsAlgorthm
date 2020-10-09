@@ -169,7 +169,7 @@ let myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd']
 // console.log(deDup(myArray))
 
 function sleep(delay){
-  return new Promise((resolve,reject)=>{
+  return new Promise((resolve)=>{
     setTimeout(resolve,delay)
   })
 }

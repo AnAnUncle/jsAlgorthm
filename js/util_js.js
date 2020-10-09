@@ -3,10 +3,9 @@ function debounce(fun,delay){
 	return function(args){
 		let that = this
 		clearTimeout(fun.id)
-		fun.id=setTimeout(fun,delay){
-			fun.apply(that,args)
-		}
-	}
+		fun.id=setTimeout(function(){
+      fun.apply(that,args)
+    },delay)
 }
 //防抖函数
 function debounce(fn, delay) {

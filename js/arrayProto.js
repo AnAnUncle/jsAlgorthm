@@ -73,8 +73,6 @@ Array.prototype.lastIndexOf = function (searchElement, fromIndex) {
   return returnIndex;
 }
 
-//最短满足要求的子数组（和小于7）
-
 //reduce实现map
 
 Array.prototype.mapByReduce=function(fn,context){
