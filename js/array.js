@@ -104,15 +104,10 @@ var minSubArrayLen = function(s, nums) {
   let sum=0,res=Infinity,j=0
   for(let i=0;i<nums.length;++i){
     sum+=nums[i]
-    if(sum>=s){
-      res=Math.min(res,i-j+1)
-      sum-=nums[j]
-      ++j
-      while(sum>=s){
+    while(sum>=s){
         res=Math.min(res,i-j+1)
         sum-=nums[j]
         ++j
-      }
     }
   }
   return res==Infinity?0:res
