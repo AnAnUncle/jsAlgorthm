@@ -7,15 +7,6 @@ function debounce(fun,delay){
       fun.apply(that,args)
     },delay)
 }
-//防抖函数
-function debounce(fn, delay) {
-  return function(args) {
-      let that = this
-      clearTimeout(fn.id)
-      fn.id = setTimeout(() => {
-          fn.call(that, args)
-      }, delay)
-  }
 }
 
 //节流函数

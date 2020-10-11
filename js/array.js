@@ -168,47 +168,41 @@ function deDup(array){
 let myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd']
 // console.log(deDup(myArray))
 
+//unique函数
+function unique(array){
+  function deStructure(arrayDe, resDe){
+    for(let i = 0; i < arrayDe.length; ++i){
+      if(Array.isArray(arrayDe[i])){
+        deStructure(arrayDe[i], resDe)
+      }
+      else{
+        if(resDe.indexOf(arrayDe[i]) === -1){
+          resDe.push(arrayDe[i])
+        }
+      }
+    }
+  }
+  let res = []
+  deStructure(array, res)
+  return res
+}
+
+function unique2(array) {
+  let res = JSON.stringify(array).split(/\[|\]|,/).filter(item=>item).reduce((pre, item)=>{
+    if(pre.indexOf(item) === -1){
+      pre.push(item)
+    }
+    return pre
+  },[])
+  return res
+}
+// console.log(unique([1,[2,3],[[4],[4,[4,5]]]]))
 function sleep(delay){
   return new Promise((resolve)=>{
     setTimeout(resolve,delay)
   })
 }
-// sleep(5000).then(()=>{console.log(1)})
 
-/**
- * 
- * @param str string字符串 
- * @return string字符串一维数组
- */
-/*
-1.flex布局(父元素）
-.father{
-display:flex;
-justify-content:center;
-align-items:center;
-}
-2.子元素高度已知,高度为h,宽度为w
-.father{
- position:relative
-}
-.child{
-positon:absolute;
-left:50%;
-top:50%;
-margin-left:-w/2px;
-margin-top:-h/2px;
-}
-3.子元素高度未知
-.father{
- position:relative
-}
-.child{
-positon:absolute;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%)
-}
-*/
 function findLongest( str ) {
     // write code here
     let num
@@ -260,3 +254,51 @@ var rotate = function(matrix) {
     return matrix
 };
 // console.log(rotate([[1,2,3],[4,5,6],[7,8,9]]))
+
+//岛屿数量
+const numIslands = (grid) => {
+  for(let i = 0; i < grid.length; ++i){
+    grid[i] = grid[i].map(Number)
+  }
+  let count = 0
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[0].length; j++) {
+      if (grid[i][j]) {
+        // console.log(i, j)
+        // console.log(grid[i][j])
+        count++
+        turnZero(i, j, grid)
+      }
+    }
+  }
+  return count
+}
+function turnZero(i, j, grid) {
+  let stack = []
+  let ilen = grid.length
+  let jlen = grid[i].length
+  stack.push([i, j])
+  grid[i][j] = 0
+  while(stack.length){
+      let [k,v] = stack.shift()
+      // console.log(k, v)
+      if(k-1 >=0 && grid[k-1][v]){
+          grid[k - 1][v] = 0
+          stack.push([k - 1,v])
+      }
+      if(v+1 < jlen && grid[k][v+1]){
+          grid[k][v+1] = 0
+          stack.push([k,v+1])
+      }
+      if(k+1 < ilen && grid[k+1][v]){
+          grid[k+1][v] = 0
+          stack.push([k+1,v])
+      }
+      if(v-1 >=0 && grid[k][v-1]){
+          grid[k][v - 1] = 0
+          stack.push([k,v-1])
+      }
+      console.log(JSON.stringify(stack))
+  }
+}
+console.log(numIslands([["1","1","1"],["0","1","0"],["1","1","1"]]))
