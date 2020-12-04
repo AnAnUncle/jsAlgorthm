@@ -186,7 +186,7 @@ function swap(array,a,b) {
 //归并
 function merge(array,low,mid,high) {
   let i,k,j
-  let arrayB=array.map((item)=>item)
+  let arrayB = array.map((item)=>item)
   // arrayB.push(121)
   // console.log(array)
   // console.log(arrayB)

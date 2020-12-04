@@ -296,4 +296,51 @@ function turnZero(i, j, grid) {
       console.log(JSON.stringify(stack))
   }
 }
-console.log(numIslands([["1","1","1"],["0","1","0"],["1","1","1"]]))
+// console.log(numIslands([["1","1","1"],["0","1","0"],["1","1","1"]]))
+
+// 第三版
+Function.prototype.apply2 = function (context, arr) {
+  var context = Object(context) || window;
+  context.fn = this;
+
+  var result;
+  if (!arr) {
+      result = context.fn();
+  }
+  else {
+      var args = [];
+      for (var i = 0, len = arr.length; i < len; i++) {
+          args.push('arr[' + i + ']');
+      }
+      result = eval('context.fn(' + args + ')')
+      console.log('context.fn(' + arr + ')')
+  }
+
+  delete context.fn
+  return result;
+}
+// 测试一下
+var value = 2;
+
+var objcall = {
+  value: 1
+}
+
+function bar(name, age) {
+  console.log(this.value);
+  return {
+      value: this.value,
+      name: name,
+      age: age
+  }
+}
+
+bar.apply2(null); // 2
+
+console.log(bar.apply2(objcall, ['kevin', 18]));
+// 1
+// Object {
+//    value: 1,
+//    name: 'kevin',
+//    age: 18
+// }

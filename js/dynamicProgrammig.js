@@ -418,10 +418,10 @@ function reverse(str) {
 
 //最长不重复子字符串
 function lengthOfLongestSubstring(str){
-	let disc=new Map()
+  let disc=new Map()
 	let j = -1,res = 0,temp = 0
 	for(let i=0;i<str.length;++i){
-		j = disc.get(str[i])===undefined?-1:disc.get(str[i])
+		j = disc.get(str[i])===undefined ? -1: disc.get(str[i])
 		disc.set(str[i],i)
 		// console.log(disc)
 		temp = i - j > temp ? temp + 1 : i - j
