@@ -1,5 +1,5 @@
 # jsAlgorthm
 js
 ```
-yarn global add arco-cli
+yarn global add test
 ```
